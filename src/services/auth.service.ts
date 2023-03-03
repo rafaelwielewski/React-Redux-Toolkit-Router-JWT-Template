@@ -1,4 +1,3 @@
-import axios from 'axios';
 import http from './http';
 import TokenService from './token.service';
 ///////////////// ajeitar /////////
