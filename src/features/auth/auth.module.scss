@@ -1,0 +1,154 @@
+.body {
+  background: linear-gradient(to bottom, #190c94, #3c3492, #141461);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+.loginBox {
+  color: #000000;
+  background-color: rgba(41, 36, 73, 0.075);
+  height: auto;
+  width: 400px;
+  border-radius: 15px;
+  box-shadow: 5px 15px 50px;
+}
+.title {
+  font-size: 35px;
+  font-weight: 500;
+  padding: 50px;
+  color: #fdfdfd;
+}
+
+.error {
+  font-size: 16px;
+  font-weight: 500;
+  padding-bottom: 10px;
+  color: #ff0000;
+}
+
+.loginInput {
+  color: #000000;
+  background-color: rgb(255, 255, 255);
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 2.5%;
+  margin-bottom: 20px;
+  height: 50px;
+  width: 70%;
+  font-size: 16px;
+  font-weight: 400;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}
+.loginInput::placeholder {
+  color: #4b4179;
+}
+.loginInput:focus::placeholder {
+  font-size: 12px;
+}
+
+.button {
+  width: 75%;
+  height: 50px;
+  margin-top: 20px;
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.linkText {
+  margin-top: 25px;
+  margin-bottom: 50px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 300;
+}
+.link {
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+}
+.link:hover {
+  text-decoration: underline;
+}
+
+@mixin btn-border-drawing(
+  $color: #ccc,
+  $hover: black,
+  $width: 2px,
+  $vertical: top,
+  $horizontal: left,
+  $duration: 0.25s
+) {
+  box-shadow: inset 0 0 0 $width $color;
+  color: $color;
+  transition: color $duration $duration/3;
+  position: relative;
+
+  &::before,
+  &::after {
+    border: 0 solid transparent;
+    box-sizing: border-box;
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    width: 0;
+    height: 0;
+
+    #{$vertical}: 0;
+    #{$horizontal}: 0;
+  }
+
+  &::before {
+    $h-side: if($horizontal == 'left', 'right', 'left');
+
+    border-#{$vertical}-width: $width;
+    border-#{$h-side}-width: $width;
+  }
+
+  &::after {
+    $v-side: if($vertical == 'top', 'bottom', 'top');
+
+    border-#{$v-side}-width: $width;
+    border-#{$horizontal}-width: $width;
+  }
+
+  &:hover {
+    color: $hover;
+
+    &::before,
+    &::after {
+      border-color: $hover;
+      transition: border-color 0s, width $duration, height $duration;
+      width: 100%;
+      height: 100%;
+    }
+
+    &::before {
+      transition-delay: 0s, 0s, $duration;
+    }
+
+    &::after {
+      transition-delay: 0s, $duration, 0s;
+    }
+  }
+}
+
+.loginButton {
+  @include btn-border-drawing(#ffffff, #ae8af1, 4px, top, left);
+  width: 75%;
+  height: 50px;
+  margin-top: 20px;
+  background: none;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}

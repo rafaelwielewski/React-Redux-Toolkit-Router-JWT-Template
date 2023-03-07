@@ -4,6 +4,7 @@ import { Login } from './features/auth/login';
 import { Route, Routes } from 'react-router-dom';
 import PrivateRoute from './components/privateRoute';
 import { Counter } from './features/counter/Counter';
+import { Register } from './features/auth/register';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           }
         />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </div>
   );

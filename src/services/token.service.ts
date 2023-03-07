@@ -1,4 +1,4 @@
-import { AuthState } from '../features/auth/authSlice';
+import { AuthState } from 'MyModels';
 
 class TokenService {
   getLocalRefreshToken() {

@@ -29,10 +29,6 @@ class AuthService {
         password
       })
       .then((response) => {
-        if (response.status === 200) {
-          //executar login
-        }
-
         return response.data;
       });
   }
